@@ -1,2 +1,10 @@
 @import 'bower_components/foundation/scss/normalize';
 @import 'bower_components/foundation/scss/foundation';
+
+ul {
+  margin-left: 0px;
+}
+
+li {
+  list-style: none;
+}

@@ -1,5 +1,5 @@
 import DS from 'ember-data';
 
-export default DS.LSAdapter.extend({
-  namespace: 'todolist'
+export default DS.ActiveModelAdapter.extend({
+  namespace: 'api'
 });

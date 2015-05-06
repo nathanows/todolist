@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   actions: {
     createTodo: function() {
-      debugger;
       var newTodoTitle = this.controllerFor(this.routeName).get('newTodoTitle');
 
       if (Ember.isBlank(newTodoTitle)) { return false; }
@@ -20,6 +19,17 @@ export default Ember.Route.extend({
       todo.save().then(function(todo) {
         list.get('todos').addObject(todo);
         list.save();
+      });
+    },
+
+    deleteTodo: function(id) {
+      var list = this.modelFor(this.routeName);
+
+      this.store.find('todo', id).then(function(todo) {
+        list.get('todos').removeObject(todo);
+        list.save();
+
+        list.destroyRecord();
       });
     }
   }
